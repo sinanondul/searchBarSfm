@@ -44,7 +44,6 @@ var list = [
     }
 ];
 
-
 const searchBar = document.getElementById("searchBar");
 
 window.onload=function(){
@@ -64,83 +63,52 @@ function showFrame(){
 
 popUp = document.getElementById("popUp");
 
-var result = [];
-var resM =[];
-var resK=[];
-var c = 0;
+
+var results = [];
 searchBar.addEventListener("keyup", (a)=>{
-    
-        //setTimeout(function(){},);
-
-        sv = a.target.value;
-
-        stayUp = (sv.length >= 2);
+    setTimeout(function() {
+        stayUp = ( a.target.value.length >= 3);
         if(stayUp){  
-            console.log("Searching '"+ sv + "' ..");
-            popUp.innerHTML = CpopUp;
+            console.log("Search");
+            popUp.innerHTML = Cpop;
             sidebar.innerHTML = Cside;
-            productbox.innerHTML= products;
+            
             
             var searchField = "title";
-            var searchVal = sv.toUpperCase();
+            var searchVal = a.target.value;
+            for (var i=0 ; i < list.length ; i++){
+                if (list[i][searchField].toLowerCase() == searchVal.toLowerCase()) {
+                    results.push(list[i]);
+                    console.log(list[i]);
+                    newEl = document.getElementById("pr");
+            }
+        }
 
-            for (i = 0; i < list.length; i++) {
-                titles = list[i]["title"].toUpperCase();
-                markas = list[i]["marka"].toUpperCase();
-                kategoris = list[i]["kategori"].toUpperCase();
-
-                var inclT = titles.includes(searchVal);
-                var inclM = markas.includes(searchVal);
-                var inclK = kategoris.includes(searchVal);
-
-                if(inclT || inclM|| inclK ) {
-                  result[c] = list[i];
-                  resM[c] = list[i].marka;
-                  resK[c] = list[i].kategori;
-                  console.log(result[c]);
-                  c++;
-                }
-              }
-            
-
-    }
-
+            return QSearch = true;
+        }
+        else{
+            console.log("nosearch");
+            return QSearch = false;
+        }
+    }, 1500);
 });
-
-
- if(result&&c){
-var products = '<div class="waw-search-products"></div>'+
-'<h3 class="waw-category-title">Ürünler</h3>'+
-'<span class="w-cls">X</span>'+
-'<hr>'+
-'<div class="waw-products">'+
-'<div class="waw-product">'+
-'<a target="_self" href="'+ result[c].url +'">'+
-    '<div class="waw-product-item">'+
-        '<div class="product-img">'+
-        '<img src="'+
-       ' https://www.sefamerve.com/img/cache/data/201910/24/sefamerve_esarp_karaca90617_12_4759291571909234711_5-1200x627.jpg">'+
-        '</div>'+
-        '<div class="product-detail">'+
-        '<span title="Kadın Giyim">Kadın Giyim</span>'+
-        '<h3 title="Karamel Lacivert Eşarp">Karamel Lacivert Eşarp</h3>'+
-       '<span class="price">69.00 TL</span>'+
-        '</div>'+
-    '</div>'+
-'</a>'+
-'</div> ';
-}
-
-
-
-
-
 
 function populate(){
 
-
-
 }
+
+var sidebar = document.getElementById("popup")
+
+var Cpop =  '<div class="waw-search-container waw-open" id="waw-search-results">' +
+            '<div class="waw-search-sidebar">'+
+                    '<p id="sidebar"></p>'+
+                    '<h3 class="waw-category-title">Kategoriler</h3>'+
+                        '<ul data-group="categories" class="waw-cat-list"><li data-link= ></li></ul>'+
+                    '<hr>'+
+                    '<h3 class="waw-category-title">Markalar</h3>'+
+                        '<ul data-group="categories" class="waw-cat-list"><li data-link= ></li></ul>'+
+                    '<hr>'+
+                '</div></div>';
 
 
 
