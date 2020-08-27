@@ -65,6 +65,8 @@ function showFrame(){
 popUp = document.getElementById("popUp");
 
 var result = [];
+var resM =[];
+var resK=[];
 var c = 0;
 searchBar.addEventListener("keyup", (a)=>{
     
@@ -82,8 +84,6 @@ searchBar.addEventListener("keyup", (a)=>{
             var searchField = "title";
             var searchVal = sv.toUpperCase();
 
-           result.length=0;
-           c = 0;
             for (i = 0; i < list.length; i++) {
                 titles = list[i]["title"].toUpperCase();
                 markas = list[i]["marka"].toUpperCase();
@@ -93,8 +93,10 @@ searchBar.addEventListener("keyup", (a)=>{
                 var inclM = markas.includes(searchVal);
                 var inclK = kategoris.includes(searchVal);
 
-                if(inclT || inclM|| inclK) {
+                if(inclT || inclM|| inclK ) {
                   result[c] = list[i];
+                  resM[c] = list[i].marka;
+                  resK[c] = list[i].kategori;
                   console.log(result[c]);
                   c++;
                 }
