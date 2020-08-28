@@ -48,70 +48,70 @@ const searchBar = document.getElementById("searchBar");
 
 window.onload=function(){
 
-console.log(searchBar);
-var clicked = false;
-var QSearch = false;
-
-searchBar.addEventListener('click', showFrame());
-
-var CpopUp = '<div class="waw-search-container waw-open" id="waw-search-results"></div>';
-
-
-function showFrame(){
-    clicked=true;
-};
-
 popUp = document.getElementById("popUp");
 
-
 var results = [];
+var resM =[];
+var resK=[];
+var c =0;
+
+
+
 searchBar.addEventListener("keyup", (a)=>{
-    setTimeout(function() {
-        stayUp = ( a.target.value.length >= 3);
+        sv = a.target.value;
+        stayUp = (sv.length >= 2);
+
         if(stayUp){  
-            console.log("Search");
+            console.log("Searching '"+ sv + "' ..");
             popUp.innerHTML = Cpop;
-            sidebar.innerHTML = Cside;
+            //sidebar.innerHTML = Cside;
             
-            
-            var searchField = "title";
-            var searchVal = a.target.value;
-            for (var i=0 ; i < list.length ; i++){
-                if (list[i][searchField].toLowerCase() == searchVal.toLowerCase()) {
-                    results.push(list[i]);
-                    console.log(list[i]);
-                    newEl = document.getElementById("pr");
+            for (i = 0; i < list.length; i++) {
+                titles = list[i]["title"].toUpperCase();
+                markas = list[i]["marka"].toUpperCase();
+                kategoris = list[i]["kategori"].toUpperCase();
+                
+                var inclM = markas.includes(sv.toUpperCase());
+                var inclK = kategoris.includes(sv.toUpperCase());
+                var inclT = titles.includes(sv.toUpperCase());
+
+                if(inclT || inclM || inclK ) {
+                    results[c] = list[i];
+                    resM[c] = list[i].marka;
+                    resK[c] = list[i].kategori;
+                    console.log(results[c]);
+                    c++;
+                  }
             }
         }
-
-            return QSearch = true;
-        }
-        else{
-            console.log("nosearch");
-            return QSearch = false;
-        }
-    }, 1500);
 });
 
 function populate(){
 
 }
 
-var sidebar = document.getElementById("popup")
+var sidebar = document.getElementById("popUp")
 
 var Cpop =  '<div class="waw-search-container waw-open" id="waw-search-results">' +
             '<div class="waw-search-sidebar">'+
                     '<p id="sidebar"></p>'+
                     '<h3 class="waw-category-title">Kategoriler</h3>'+
-                        '<ul data-group="categories" class="waw-cat-list"><li data-link= ></li></ul>'+
+                        '<ul data-group="categories" class="waw-cat-list"><li data-link=' 
+                      //  "https://www.a101.com.tr/elektronik/kulaklik/?waw_keyword=" data-prod-val="Kulaklık" style=
+                      //  "cursor: pointer;">Kulaklık</li></ul>'+//
                     '<hr>'+
                     '<h3 class="waw-category-title">Markalar</h3>'+
                         '<ul data-group="categories" class="waw-cat-list"><li data-link= ></li></ul>'+
                     '<hr>'+
                 '</div></div>';
 
+var Cside =  '<div class="waw-search-sidebar"></div>' +
+ '<h3 class="waw-category-title">Kategoriler</h3><hr>'+
+    '<li><ul> </ul></li>'+
+     '<h3 class="waw-category-title">Markalar</h3><hr>';
 
 
+};
 
 
 /*
@@ -134,4 +134,3 @@ searchBar.addEventListener('keyup', (e)=>{
         }
 }); */
 
-};
