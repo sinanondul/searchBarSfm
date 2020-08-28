@@ -38,32 +38,33 @@ var list = [
     },{
         "title":        "Xbox",
         "url":          "https://www.playstation.com/",
-        "img":        "https://i.pcmag.com/imgry/reviews/0163ixlT8p0fqiqInTBkpc6-4.1569477029.fit_scale.size_1028x578.jpg",
+        "img":          "https://i.pcmag.com/imgry/reviews/0163ixlT8p0fqiqInTBkpc6-4.1569477029.fit_scale.size_1028x578.jpg",
         "marka":        "Sony",
         "kategori":     "Oyun Konsolu"
     }
 ];
 
-const searchBar = document.getElementById("searchBar");
+const searchBar = document.getElementById("searchBar"); 
+$(document).ready(function () {
 
-window.onload=function(){
+
+    $("h1").hide()
+
 
 popUp = document.getElementById("popUp");
 
 var results = [];
-var resM =[];
-var resK=[];
 var c =0;
-
-
 
 searchBar.addEventListener("keyup", (a)=>{
         sv = a.target.value;
         stayUp = (sv.length >= 2);
 
         if(stayUp){  
+            $("h1").show();
             console.log("Searching '"+ sv + "' ..");
-            popUp.innerHTML = Cpop;
+            //$(".waw-search-results").show();
+            //popUp.innerHTML = Cpop;
             //sidebar.innerHTML = Cside;
             
             for (i = 0; i < list.length; i++) {
@@ -77,28 +78,46 @@ searchBar.addEventListener("keyup", (a)=>{
 
                 if(inclT || inclM || inclK ) {
                     results[c] = list[i];
-                    resM[c] = list[i].marka;
-                    resK[c] = list[i].kategori;
+
                     console.log(results[c]);
+                    results.map(x => console.log(`test bu ${x.kategori}`));
                     c++;
                   }
             }
         }
+        $(document).click(function(event){
+            var $target = $(event.target);
+            if(!$target.closest('h1').length && 
+            $('h1').is(":visible")) {
+              $('h1').hide();
+            }        
+        })
 });
 
 function populate(){
 
 }
 
-var sidebar = document.getElementById("popUp")
+function printCat(){
 
-var Cpop =  '<div class="waw-search-container waw-open" id="waw-search-results">' +
-            '<div class="waw-search-sidebar">'+
+   results.forEach(title => {
+
+         
+    });
+
+}
+
+
+
+var sidebar = document.getElementById("popUp");
+
+
+
+var Cpop =  '<div class="waw-search-container waw-open" id="sr">' +
+            '<div class="waw-search-sidebar id= "side">'+
                     '<p id="sidebar"></p>'+
                     '<h3 class="waw-category-title">Kategoriler</h3>'+
-                        '<ul data-group="categories" class="waw-cat-list"><li data-link=' 
-                      //  "https://www.a101.com.tr/elektronik/kulaklik/?waw_keyword=" data-prod-val="Kulaklık" style=
-                      //  "cursor: pointer;">Kulaklık</li></ul>'+//
+                        '<ul data-group="categories" class="waw-cat-list"><li data-link=' +
                     '<hr>'+
                     '<h3 class="waw-category-title">Markalar</h3>'+
                         '<ul data-group="categories" class="waw-cat-list"><li data-link= ></li></ul>'+
@@ -111,8 +130,7 @@ var Cside =  '<div class="waw-search-sidebar"></div>' +
      '<h3 class="waw-category-title">Markalar</h3><hr>';
 
 
-};
-
+    });
 
 /*
 function checklength(){
