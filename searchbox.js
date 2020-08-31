@@ -44,6 +44,9 @@ var list = [
     }
 ];
 
+
+
+
 const searchBar = document.getElementById("searchBar"); 
 $(document).ready(function () {
 
@@ -80,7 +83,7 @@ searchBar.addEventListener("keyup", (a)=>{
                     results[c] = list[i];
 
                     console.log(results[c]);
-                    results.map(x => console.log(`test bu ${x.kategori}`));
+                    results.map(x => console.log(`${x.kategori}`));
                     c++;
                   }
             }
