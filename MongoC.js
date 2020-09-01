@@ -1,25 +1,32 @@
-define (function(require){
-  const { MongoClient } = require("mongodb");
+const {MongoClient} = require('mongodb');
+async function main(){
+  /**
+   * Connection URI. Update <username>, <password>, and <your-cluster-url> to reflect your cluster.
+   * See https://docs.mongodb.com/ecosystem/drivers/node/ for more details
+   */
   const uri = "mongodb+srv://suatkuran:EPIKtetos80@cluster0.t1kyp.mongodb.net/scraper?retryWrites=true&w=majority";
+
   const client = new MongoClient(uri);
 
-  async function main(){
-    try {
+  try {
+      // Connect to the MongoDB cluster
       await client.connect();
-      await client.db("admin").command({ping: 1});
-      console.log ("Successful");
-    } finally {
+
+      // Make the appropriate DB calls
+      await  listDatabases(client);
+
+  } catch (e) {
+      console.error(e);
+  } finally {
       await client.close();
-    }
   }
+}
 
-main().catch(console.dir);
-});
+main().catch(console.error);
 
-//   async function listDatabases(){
-//     databasesList = await client.db().admin().listDatabases();
-//     console.log("Databases:");
-//     databasesList.databases.forEach(db => console.log(` - ${db.name}`));
-//   };
+async function listDatabases(client){
+  databasesList = await client.db().admin().listDatabases();
 
- //});
+  console.log("Databases:");
+  databasesList.databases.forEach(db => console.log(` - ${db.name}`));
+};
