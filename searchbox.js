@@ -104,7 +104,7 @@ var Cpop =  '<div class="waw-search-container waw-open" id="waw-search-results">
                         '<ul data-group="categories" class="waw-cat-list"><li data-link= ></li></ul>'+
                     '<hr>'+
                 '</div></div>';
-
+//
 var Cside =  '<div class="waw-search-sidebar"></div>' +
  '<h3 class="waw-category-title">Kategoriler</h3><hr>'+
     '<li><ul> </ul></li>'+
