@@ -1,0 +1,19 @@
+{
+  "name": "searchbarsfm",
+  "version": "1.0.0",
+  "description": "sfmerve",
+  "main": "MongoC.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sinanondul/searchBarSfm.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sinanondul/searchBarSfm/issues"
+  },
+  "homepage": "https://github.com/sinanondul/searchBarSfm#readme"
+}

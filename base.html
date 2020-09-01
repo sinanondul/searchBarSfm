@@ -1,43 +1,41 @@
-
 <html>
     <head>
-      
-      
       <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script> 
       <script src="MongoC.js"></script>
-      <link rel="stylesheet" type="text/css" href="styles.css">   
+      <script>
+      $( document ).ready(function() {
       
+      $.getScript("MongoC.js",function(data){
+        console.log("work")
+        console.log(data)
+      })}
+      </script>
+      <link rel="stylesheet" type="text/css" href="styles.css">   
     </head>
-    
-        <body>
-          
-            <div class="search-area js-search-area">
-                  <input type="text" id= "searchBar" name="search_text" c autocomplete="off">
-                  <button type="submit">
-                    SEARCH
-                  </button>
-            </div>
-            <h1>
-            <div id="waw-search-results" class="waw-search-container waw-open" >
-              <div class="waw-search-sidebar">
-                <p id="sidebar"></p>
-                    <h3 class="waw-category-title">Kategoriler</h3>
-                      <hr>
-                      <ul></ul>
-                      <h3 class="waw-category-title">Markalar</h3>
-                      <hr>
-                      <ul></ul>
-                      
-                </div>
-            </div>
+      <body>  
+        <div class="search-area js-search-area">
+          <input type="text" id= "searchBar" name="search_text" c autocomplete="off">
+            <button type="submit">
+              SEARCH
+            </button>
+          </div>
+          <h1>
+        <div id="waw-search-results" class="waw-search-container waw-open" >
+          <div class="waw-search-sidebar">
+            <p id="sidebar"></p>
+              <h3 class="waw-category-title">Kategoriler</h3>
+                <hr>
+                  <ul></ul>
+                  <h3 class="waw-category-title">Markalar</h3>
+                    <hr>
+                    <ul></ul>            
+          </div>
+        </div>
           </h1>
-
-
-            <!--div id="popUp"></div-->
-                
-                
+            <div id="popUp"></div> 
             <div>
-                <div id="pBox"></div>
+              
+              <div id="pBox"></div>
             </div>
         </div>
 
@@ -49,8 +47,7 @@
         
         
        
-        <!--script src="searchbox.js"></script-->
+        <script src="searchbox.js"></script>
         <script src="searchpop.js"></script>
         <script src="productbox.js"></script>
-        <script>"bundle.js"</script>
 </html>
