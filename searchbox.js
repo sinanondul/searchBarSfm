@@ -44,6 +44,9 @@ var list = [
     }
 ];
 
+
+
+
 const searchBar = document.getElementById("searchBar");
 
 window.onload=function(){
@@ -58,10 +61,10 @@ var c =0;
 
 
 searchBar.addEventListener("keyup", (a)=>{
-        sv = a.target.value;
-        stayUp = (sv.length >= 2);
-
+        var sv = a.target.value;
+        var stayUp = (sv.length >= 2);
         if(stayUp){  
+            
             console.log("Searching '"+ sv + "' ..");
             popUp.innerHTML = Cpop;
             //sidebar.innerHTML = Cside;
