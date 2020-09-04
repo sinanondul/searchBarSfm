@@ -8,6 +8,10 @@ async function main(){
   const uri = "mongodb+srv://suatkuran:EPIKtetos80@cluster0.t1kyp.mongodb.net/scraper?retryWrites=true&w=majority";
 
   const client = new MongoClient(uri,  { useUnifiedTopology: true });
+
+
+  import sv from './searchbox.js';
+  import stayUp from './searchbox.js'
 //
   try {
       // Connect to the MongoDB cluster
@@ -17,32 +21,21 @@ async function main(){
 
       var mong = db.collection('collection2')
      
-      //list all 
-      await mong.find({}).toArray(function(err, result){
-        if (err) throw err;
-          console.log(result)
-      });
+    //list all 
+    // await mong.find({}).toArray(function(err, result){
+    //   if (err) throw err;
+    //     console.log(result)
+    // });
 
-
-     
-      //import {sv} from './searchbox.js'
+    // var sv = "mac"
+    // mong.find({"title": new RegExp(sv,'i')}).toArray(function(err,res){
+    //   if (err) throw err;
+    //     console.log(res);
+    // });
       
-      //if(sv.target.value.length() >= 2){""
-      // var sv = "mac"
-      // mong.find({"title": new RegExp(sv,'i')}).toArray(function(err,res){
-      //   if (err) throw err;
-      //     console.log(res);
+      //list all databases
+      await  listDatabases(client);
 
-      // });
-    //await console.log(mong.countDocuments());
-
-
-
-    //}
-      
-      // list all databases
-      //await  listDatabases(client);
-      //console.log(cursor);
   } catch (e) {
       console.error(e);
   } finally {
@@ -58,4 +51,5 @@ async function listDatabases(client){
   console.log("Databases:");
   databasesList.databases.forEach(db => console.log(` - ${db.name}`));
 };
+
 
